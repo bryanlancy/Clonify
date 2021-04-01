@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.album {
+	height: 100%;
+	font-family: 'Montserrat', sans-serif;
+}
+.album-details {
+	display: flex;
+	align-items: flex-end;
+	position: relative;
+
+	height: 300px;
+	padding: 16px 24px;
+	color: #fff;
+}
+.album-image {
+	height: 200px;
+	width: 200px;
+	bottom: 0;
+}
+
+.album-text {
+	margin-left: 16px;
+}
+
+.album-text > p {
+	font-size: 12px;
+	font-weight: bold;
+}
+.album-text h1 {
+	font-size: 72px;
+	letter-spacing: -5px;
+	white-space: nowrap;
+}
+
+.album-stats {
+	font-size: 12px;
+	display: flex;
+	align-items: center;
+}
+.album-stats > :not(:first-child)::before {
+	margin: 0 2px;
+	align-items: center;
+	content: '•';
+	font-weight: bold;
+}
+.album-artist {
+	display: flex;
+	align-items: center;
+}
+.album-artist-image {
+	height: 24px;
+	width: 24px;
+	border-radius: 50%;
+}
+.album-artist-name {
+	color: #fff;
+	text-decoration: none;
+	margin-left: 2px;
+	font-weight: bold;
+}
+.album-artist-name:hover {
+	text-decoration: underline;
+}

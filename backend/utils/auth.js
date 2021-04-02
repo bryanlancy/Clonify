@@ -58,8 +58,6 @@ const setSpotifyToken = async (req, res, next) => {
 			console.log('Error getting new token')
 		}
 	}
-	console.log('SET ACCESS TOKEN', process.env.SPOTIFY_ACCESS_TOKEN)
-	res.setHeader('Authorization', `Bearer ${process.env.SPOTIFY_ACCESS_TOKEN}`)
 	return next()
 }
 

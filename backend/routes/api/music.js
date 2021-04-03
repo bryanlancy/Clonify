@@ -97,7 +97,7 @@ router.get(
 						const { albums } = response.data
 						res.json({
 							total: albums.total,
-							album: Object.assign(
+							albums: Object.assign(
 								...albums.items.map(album => {
 									return {
 										[album.id]: {
@@ -118,7 +118,7 @@ router.get(
 						const { artists } = response.data
 						res.json({
 							total: artists.total,
-							artist: Object.assign(
+							artists: Object.assign(
 								...artists.items.map(artist => {
 									return {
 										[artist.id]: {
@@ -138,7 +138,7 @@ router.get(
 						const { playlists } = response.data
 						res.json({
 							total: playlists.total,
-							playlist: Object.assign(
+							playlists: Object.assign(
 								...playlists.items.map(playlist => {
 									return {
 										[playlist.id]: {
@@ -159,7 +159,7 @@ router.get(
 						const { tracks } = response.data
 						res.json({
 							total: tracks.total,
-							track: Object.assign(
+							tracks: Object.assign(
 								...tracks.items.map(track => {
 									return {
 										[track.id]: {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './SearchPage.css'
 
 import { searchResults } from '../../store/search'
@@ -9,6 +9,7 @@ export default function SearchPage() {
 	const dispatch = useDispatch()
 	const [searchInput, setSearchInput] = useState('')
 	const [searchType, setSearchType] = useState('album')
+	const { [searchType]: searchResults } = useSelector(state => state.search)
 
 	const types = ['album', 'artist', 'playlist', 'track']
 
@@ -34,6 +35,10 @@ export default function SearchPage() {
 		getFocus()
 	}, [])
 
+	useEffect(() => {
+		console.log(searchType, searchResults)
+	}, [searchResults])
+
 	return (
 		<div className="page">
 			<div className="search-input">
@@ -56,6 +61,7 @@ export default function SearchPage() {
 					}}
 				></input>
 			</div>
+
 			<h1>Search Page</h1>
 			<h1>Search Results down here biiiiiiiiiitch</h1>
 		</div>

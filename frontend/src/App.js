@@ -22,7 +22,6 @@ function App() {
 
 	return (
 		<>
-			<Navigation isLoaded={isLoaded} />
 			{isLoaded && (
 				<>
 					<Switch>
@@ -32,14 +31,22 @@ function App() {
 						<Route path="/signup">
 							<SignupFormPage />
 						</Route>
+						<ProtectedRoute exact path="/">
+							<Navigation isLoaded={isLoaded} />
+
+							<SongBar />
+						</ProtectedRoute>
 						<ProtectedRoute path="/search">
+							<Navigation isLoaded={isLoaded} />
 							<SearchPage />
+							<SongBar />
 						</ProtectedRoute>
 						<ProtectedRoute path="/album/:id">
+							<Navigation isLoaded={isLoaded} />
 							<AlbumDetailPage />
+							<SongBar />
 						</ProtectedRoute>
 					</Switch>
-					<SongBar />
 				</>
 			)}
 		</>

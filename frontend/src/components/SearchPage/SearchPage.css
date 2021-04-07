@@ -1,1 +1,42 @@
+.search-page > :not(:first-child) {
+	margin-top: 8px;
+}
+.search-page {
+	--padding-page: 16px;
+	padding: calc(var(--navbar-height) + var(--padding-page)) var(--padding-page) calc(var(--widget-height) + var(--padding-page));
+	width: 100%;
+}
+.search-input {
+	--search-height: 40px;
+	--search-radius: 24px;
 
+	display: flex;
+	height: var(--search-height);
+
+	width: 50%;
+}
+
+.search-input__text,
+.search-input__type {
+	padding-left: 16px;
+	border: none;
+	font-size: calc(var(--search-height) * 0.5);
+}
+
+.search-input__type {
+	border-radius: var(--search-radius) 0 0 var(--search-radius);
+	width: 9em;
+}
+
+.search-input__text {
+	border: none;
+	outline: none;
+	border-radius: 0 var(--search-radius) var(--search-radius) 0;
+	width: 100%;
+	line-height: var(--search-height);
+}
+.search-list {
+	display: grid;
+	gap: 16px;
+	width: 100%;
+}

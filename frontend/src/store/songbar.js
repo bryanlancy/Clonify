@@ -11,7 +11,7 @@ export const updateSongLink = link => async dispatch => {
 	dispatch(updateLink(link))
 }
 const initialState = {
-	link: 'https://open.spotify.com/embed/album/1I2tqtGIaLxoxVUlZ7oTlx',
+	link: 'https://open.spotify.com/embed/album/01FCoGEQ3NFWF4fHJzdiax',
 }
 export default function reducer(state = initialState, action) {
 	switch (action.type) {

@@ -6,6 +6,7 @@
 	font-family: 'Montserrat', sans-serif;
 	--navbar-height: 48px;
 	--widget-height: 80px;
+	--padding-page: 16px;
 	--color-background: #121212;
 	--color-text-main: #fff;
 	--color-text-sub: #cfcfcf;
@@ -19,5 +20,7 @@ body,
 }
 
 .page {
+	display: flex;
+	flex-direction: column;
 	color: var(--color-text-main);
 }

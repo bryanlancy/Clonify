@@ -1,8 +1,15 @@
+@keyframes dscliRad {
+	0% {
+	}
+	100% {
+		border-radius: 0;
+	}
+}
+
 .search-page > :not(:first-child) {
 	margin-top: 8px;
 }
 .search-page {
-	--padding-page: 16px;
 	padding: calc(var(--navbar-height) + var(--padding-page)) var(--padding-page) calc(var(--widget-height) + var(--padding-page));
 	width: 100%;
 }
@@ -12,8 +19,15 @@
 
 	display: flex;
 	height: var(--search-height);
+	width: 35%;
+	min-width: 350px;
+	position: -webkit-sticky;
+	position: sticky;
+	margin-left: var(--padding-page);
+	top: calc(var(--navbar-height) + var(--padding-page));
+	transition: 0.15s linear all;
 
-	width: 50%;
+	z-index: 1;
 }
 
 .search-input__text,
@@ -33,10 +47,86 @@
 	outline: none;
 	border-radius: 0 var(--search-radius) var(--search-radius) 0;
 	width: 100%;
+
 	line-height: var(--search-height);
 }
 .search-list {
 	display: grid;
 	gap: 16px;
 	width: 100%;
+	grid-template-columns: repeat(var(--columns), 1fr);
+	justify-items: center;
+
+	align-items: center;
+	border: 1px solid #fff;
+}
+
+@media screen and (min-width: 620px) {
+	.search-scrolled {
+		max-width: none;
+		top: var(--navbar-height);
+		width: 100%;
+		margin: 0;
+	}
+	.search-scrolled :is(select, input) {
+		border-radius: 0;
+	}
+}
+
+@media screen and (max-width: 2400px) {
+	.search-list {
+		--columns: 7;
+	}
+}
+@media screen and (max-width: 1800px) {
+	.search-list {
+		--columns: 6;
+	}
+}
+@media screen and (max-width: 1800px) {
+	.search-list {
+		--columns: 5;
+	}
+}
+@media screen and (max-width: 1475px) {
+	.search-list {
+		--columns: 4;
+	}
+}
+
+@media screen and (max-width: 1210px) {
+	.search-list {
+		--columns: 3;
+	}
+}
+@media screen and (max-width: 950px) {
+	.search-list {
+		--columns: 2;
+	}
+}
+@media screen and (max-width: 615px) {
+	.search-page {
+		padding: var(--navbar-height) 0 var(--widget-height);
+	}
+	.result-container {
+		padding: 0 var(--padding-page);
+	}
+	.result-container h1 {
+		margin: 16px 0;
+	}
+	.search-list {
+		--columns: 1;
+	}
+	.search-input :is(select, input) {
+		border-radius: 0;
+	}
+	.search-input {
+		max-width: none;
+		margin: 0;
+		width: 100%;
+		top: var(--navbar-height);
+	}
+	.card {
+		max-width: 450px;
+	}
 }

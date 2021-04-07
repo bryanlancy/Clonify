@@ -15,6 +15,7 @@ export default function SearchPage() {
 	const [searchLimit, setSearchLimit] = useState(50)
 	const [searchOffset, setSearchOffset] = useState(0)
 	const [searchLoaded, setSearchLoaded] = useState(true)
+	const [scrolled, setScrolled] = useState(false)
 	const { [searchType]: searchResultsObj } = useSelector(state => state.search)
 
 	const types = ['album', 'artist', 'playlist', 'track']
@@ -29,7 +30,7 @@ export default function SearchPage() {
 		let docheight = getDocHeight()
 		let scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop
 		let trackLength = docheight - winheight
-		let pctScrolled = Math.floor((scrollTop / trackLength) * 100) // gets percentage scrolled (ie: 80 or NaN if tracklength == 0)
+		let pctScrolled = ((scrollTop / trackLength) * 100).toFixed(2) // gets percentage scrolled (ie: 80 or NaN if tracklength == 0)
 		return pctScrolled
 	}
 
@@ -69,6 +70,10 @@ export default function SearchPage() {
 
 	useScrollPosition(() => {
 		let percent = amountScrolled()
+		//scrolled styling
+		if (percent > 0.1) setScrolled(true)
+		else setScrolled(false)
+		//preload for "infinite scroll"
 		if (percent > 85 && searchLoaded) {
 			setSearchLoaded(false)
 			setSearchOffset(searchOffset + 1)
@@ -76,8 +81,8 @@ export default function SearchPage() {
 	})
 
 	return (
-		<div className="page search-page">
-			<div className="search-input">
+		<div className="page">
+			<div className={`search-input ${scrolled ? 'search-scrolled' : ''}`}>
 				<select className="search-input__type" value={searchType} onChange={changeType}>
 					{types.map(type => (
 						<option value={type} key={type}>
@@ -98,8 +103,7 @@ export default function SearchPage() {
 					}}
 				></input>
 			</div>
-
-			{searchResultsObj.q === searchInput && <SearchList results={searchResultsObj} type={searchType} />}
+			<div className="search-page">{searchResultsObj.q === searchInput && <SearchList results={searchResultsObj} type={searchType} />}</div>
 		</div>
 	)
 }

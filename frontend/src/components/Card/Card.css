@@ -70,6 +70,12 @@
 	margin-top: 24px;
 	display: flex;
 	flex-direction: column;
+	max-width: 250px;
+}
+.card__info b {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .card__info :not(:first-child) {
 	margin-top: 4px;

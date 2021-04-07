@@ -6,7 +6,7 @@ import { updateSongLink } from '../../store/songbar'
 
 import './Card.css'
 
-export default function Card({ id, size, type, cardInfo }) {
+export default function Card({ id, type, cardInfo }) {
 	const history = useHistory()
 	const dispatch = useDispatch()
 

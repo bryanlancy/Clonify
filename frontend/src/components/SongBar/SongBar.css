@@ -1,6 +1,6 @@
 .songbar {
-	position: absolute;
+	position: fixed;
 	bottom: 0;
-	height: 80px;
+	height: var(--widget-height);
 	width: 100%;
 }

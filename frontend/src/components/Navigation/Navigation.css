@@ -1,8 +1,43 @@
 .navbar {
-	position: absolute;
+	position: fixed;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	width: 100%;
+	padding: 16px;
+	z-index: 1;
 	height: var(--navbar-height);
-	background-color: #00ff0022;
+	background-color: #ffd500;
+}
+
+.navbar__history-buttons {
+	display: flex;
+	justify-content: space-between;
+}
+
+.navbar__history-buttons :not(:first-child) {
+	margin-left: 16px;
+}
+
+.navbar__history-btn {
+	--icon-adjust: 1.5px;
+	--button-radius: 32px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: var(--button-radius);
+	height: var(--button-radius);
+	padding: 8px;
+	background-color: #000;
+	color: var(--color-text-main);
+	border-radius: 50%;
+}
+
+.fa-chevron-right {
+	transform: translateX(var(--icon-adjust));
+}
+.fa-chevron-left {
+	transform: translateX(calc(var(--icon-adjust) * -1));
 }
 
 .profile-dropdown {

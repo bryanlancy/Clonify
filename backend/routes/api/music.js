@@ -81,115 +81,119 @@ router.get(
 	'/search',
 	asyncHandler(async (req, res) => {
 		const types = ['album', 'artist', 'playlist', 'track']
-		let { q, type } = req.query
-
+		let { q, type, limit, offset } = req.query
+		console.log(offset)
 		if (q && types.includes(type)) {
 			const config = {
 				method: 'get',
-				url: `https://api.spotify.com/v1/search?q=${q}&type=${type}&limit=50`,
+				url: `https://api.spotify.com/v1/search?q=${q}&type=${type}&limit=${limit}&offset=${offset}`,
 				headers,
 			}
 			const response = await axios(config)
 
 			if (response.status === 200) {
-				switch (type) {
-					case 'album':
-						const { albums } = response.data
-						res.json({
-							total: albums.total,
-							albums: Object.assign(
-								...albums.items.map(album => {
-									return {
-										[album.id]: {
-											openUrl: album.external_urls['spotify'],
-											name: album.name,
-											artists: album.artists.map(artist => artist.name),
-											image: album.images[0] ? album.images[0].url : '',
-											songs: {
-												total: album.total_tracks,
+				if (response.data[`${type}s`].items.length) {
+					switch (type) {
+						case 'album':
+							const { albums } = response.data
+							res.status(200).json({
+								total: albums.total,
+								album: Object.assign(
+									...albums.items.map(album => {
+										return {
+											[album.id]: {
+												openUrl: album.external_urls['spotify'],
+												name: album.name,
+												artists: album.artists.map(artist => artist.name),
+												image: album.images[0] ? album.images[0].url : '',
+												songs: {
+													total: album.total_tracks,
+												},
 											},
-										},
-									}
-								})
-							),
-						})
-						break
-					case 'artist':
-						const { artists } = response.data
-						res.json({
-							total: artists.total,
-							artists: Object.assign(
-								...artists.items.map(artist => {
-									return {
-										[artist.id]: {
-											openUrl: artist.external_urls['spotify'],
-											image: artist.images[0] ? artist.images[0].url : '',
-											name: artist.name,
-											genres: artist.genres,
-											followers: artist.followers.total,
-											popularity: artist.popularity,
-										},
-									}
-								})
-							),
-						})
-						break
-					case 'playlist':
-						const { playlists } = response.data
-						res.json({
-							total: playlists.total,
-							playlists: Object.assign(
-								...playlists.items.map(playlist => {
-									return {
-										[playlist.id]: {
-											openUrl: playlist.external_urls['spotify'],
-											image: playlist.images[0] ? playlist.images[0].url : '',
-											name: playlist.name,
-											description: playlist.description,
-											songs: {
-												total: playlist.tracks.total,
+										}
+									})
+								),
+							})
+							break
+						case 'artist':
+							const { artists } = response.data
+							res.status(200).json({
+								total: artists.total,
+								artist: Object.assign(
+									...artists.items.map(artist => {
+										return {
+											[artist.id]: {
+												openUrl: artist.external_urls['spotify'],
+												image: artist.images[0] ? artist.images[0].url : '',
+												name: artist.name,
+												genres: artist.genres,
+												followers: artist.followers.total,
+												popularity: artist.popularity,
 											},
-										},
-									}
-								})
-							),
-						})
-						break
-					case 'track':
-						const { tracks } = response.data
-						res.json({
-							total: tracks.total,
-							tracks: Object.assign(
-								...tracks.items.map(track => {
-									return {
-										[track.id]: {
-											openUrl: track.external_urls['spotify'],
-											image: track.album.images[0] ? track.album.images[0].url : '',
-											name: track.name,
-											duration: track.duration_ms,
-											explicit: track.explicit,
-											popularity: track.popularity,
-											artists: track.artists.map(artist => {
-												return {
-													id: artist.id,
-													name: artist.name,
-												}
-											}),
-											album: {
-												id: track.album.id,
-												name: track.album.name,
+										}
+									})
+								),
+							})
+							break
+						case 'playlist':
+							const { playlists } = response.data
+							res.status(200).json({
+								total: playlists.total,
+								playlist: Object.assign(
+									...playlists.items.map(playlist => {
+										return {
+											[playlist.id]: {
+												openUrl: playlist.external_urls['spotify'],
+												image: playlist.images[0] ? playlist.images[0].url : '',
+												name: playlist.name,
+												description: playlist.description,
+												songs: {
+													total: playlist.tracks.total,
+												},
 											},
-										},
-									}
-								})
-							),
-						})
-						break
-					default:
-						break
+										}
+									})
+								),
+							})
+							break
+						case 'track':
+							const { tracks } = response.data
+							res.status(200).json({
+								total: tracks.total,
+								track: Object.assign(
+									...tracks.items.map(track => {
+										return {
+											[track.id]: {
+												openUrl: track.external_urls['spotify'],
+												image: track.album.images[0] ? track.album.images[0].url : '',
+												name: track.name,
+												duration: track.duration_ms,
+												explicit: track.explicit,
+												popularity: track.popularity,
+												artists: track.artists.map(artist => {
+													return {
+														id: artist.id,
+														name: artist.name,
+													}
+												}),
+												album: {
+													id: track.album.id,
+													name: track.album.name,
+												},
+											},
+										}
+									})
+								),
+							})
+							break
+						default:
+							break
+					}
+				} else {
+					res.status(204).json('No results found')
 				}
 			}
-		} else res.json('Ooopsy Poopsy')
+		} else res.status(404).json('Ooopsy Poopsy')
 	})
 )
 

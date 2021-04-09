@@ -1,3 +1,6 @@
+.album-page {
+	padding: calc(var(--navbar-height)) 0 calc(var(--widget-height));
+}
 .album {
 	height: 100%;
 	font-family: 'Montserrat', sans-serif;
@@ -26,9 +29,8 @@
 	font-weight: bold;
 }
 .album-text h1 {
-	font-size: 72px;
+	font-size: 7vw;
 	letter-spacing: -5px;
-	white-space: nowrap;
 }
 
 .album-stats {
@@ -51,6 +53,7 @@
 	width: 24px;
 	border-radius: 50%;
 }
+
 .album-artist-name {
 	color: #fff;
 	text-decoration: none;
@@ -59,4 +62,46 @@
 }
 .album-artist-name:hover {
 	text-decoration: underline;
+}
+
+.album-tracks {
+	padding: 16px;
+	background-color: #00000030;
+	height: 100%;
+}
+.album-tracks > :not(:first-child) {
+	margin-top: 16px;
+}
+
+.buttons {
+	display: flex;
+	align-items: center;
+}
+.buttons :not(:first-child) {
+	margin-left: 24px;
+}
+.play-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	background-color: #1db954;
+	height: 50px;
+	width: 50px;
+}
+.play-button:hover {
+	transform: scale(1.05);
+}
+.heart-album,
+.heart-track,
+.dropdown-button {
+	font-size: 24px;
+	color: #8f8f8f;
+}
+:is(.heart-album, .heart-track, .dropdown-button):hover {
+	color: #bfbfbf;
+}
+.play-button i {
+	color: #fff;
+	transform: translateX(1.5px);
 }

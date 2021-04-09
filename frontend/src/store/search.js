@@ -26,7 +26,6 @@ export const searchResults = ({ q, type, limit, offset }) => async (dispatch, ge
 		//if the current search is the same as the previous search then update
 		if (!(q === prevSearch.q)) dispatch(newSearch(type, q, total, results))
 		else dispatch(updateSearch(type, results))
-
 		return true
 	} else {
 		return false

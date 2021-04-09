@@ -82,7 +82,6 @@ router.get(
 	asyncHandler(async (req, res) => {
 		const types = ['album', 'artist', 'playlist', 'track']
 		let { q, type, limit, offset } = req.query
-		console.log(offset)
 		if (q && types.includes(type)) {
 			const config = {
 				method: 'get',
@@ -92,6 +91,7 @@ router.get(
 			const response = await axios(config)
 
 			if (response.status === 200) {
+				const defaultImage = 'https://img.pngio.com/my-my-png-album-covers-500_500.png'
 				if (response.data[`${type}s`].items.length) {
 					switch (type) {
 						case 'album':
@@ -105,7 +105,7 @@ router.get(
 												openUrl: album.external_urls['spotify'],
 												name: album.name,
 												artists: album.artists.map(artist => artist.name),
-												image: album.images[0] ? album.images[0].url : '',
+												image: album.images[0] ? album.images[0].url : defaultImage,
 												songs: {
 													total: album.total_tracks,
 												},
@@ -124,7 +124,7 @@ router.get(
 										return {
 											[artist.id]: {
 												openUrl: artist.external_urls['spotify'],
-												image: artist.images[0] ? artist.images[0].url : '',
+												image: artist.images[0] ? artist.images[0].url : defaultImage,
 												name: artist.name,
 												genres: artist.genres,
 												followers: artist.followers.total,
@@ -144,7 +144,7 @@ router.get(
 										return {
 											[playlist.id]: {
 												openUrl: playlist.external_urls['spotify'],
-												image: playlist.images[0] ? playlist.images[0].url : '',
+												image: playlist.images[0] ? playlist.images[0].url : defaultImage,
 												name: playlist.name,
 												description: playlist.description,
 												songs: {
@@ -165,7 +165,7 @@ router.get(
 										return {
 											[track.id]: {
 												openUrl: track.external_urls['spotify'],
-												image: track.album.images[0] ? track.album.images[0].url : '',
+												image: track.album.images[0] ? track.album.images[0].url : defaultImage,
 												name: track.name,
 												duration: track.duration_ms,
 												explicit: track.explicit,

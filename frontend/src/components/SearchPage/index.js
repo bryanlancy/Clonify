@@ -65,7 +65,6 @@ export default function SearchPage() {
 
 	useEffect(() => {
 		setSearchOffset(0)
-		console.log(searchResultsObj)
 	}, [searchInput, searchType])
 
 	useScrollPosition(() => {

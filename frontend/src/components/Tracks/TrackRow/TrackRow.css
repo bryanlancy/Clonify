@@ -10,17 +10,20 @@
 .track-result__row:hover {
 	background-color: #4f4f4f;
 }
-.heart-button,
+.heart-track,
 .track-options,
 .track-result__row-overlay {
 	opacity: 0;
 }
-.track-result__row:hover :is(.heart-button, .track-options, .track-result__row-overlay) {
+.track-result__row:hover :is(.heart-track, .track-options, .track-result__row-overlay) {
 	opacity: 1;
 }
 
 .track-result__row:hover .track-result__row-overlay {
 	background: #000000aa;
+}
+.album-tracks .track-result__row:hover .track-result__row-overlay {
+	background: none;
 }
 
 .track-result__row-info {
@@ -50,10 +53,18 @@
 	height: 100%;
 	width: 100%;
 }
+.track-result__number {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+.track-result__row:hover .track-result__number {
+	opacity: 0;
+}
 .track-result__row-text {
 	margin-left: 16px;
 }
-
 .track-result__row-artist {
 	display: flex;
 	margin-top: 4px;

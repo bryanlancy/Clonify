@@ -20,6 +20,10 @@ export default function Card({ id, type, cardInfo }) {
 		history.push(`/${type}/${id}`)
 	}
 
+	function checkText(text, maxText) {
+		return text.length > maxText ? text.slice(0, maxText) + '...' : text
+	}
+
 	return (
 		<div
 			className="card"
@@ -36,7 +40,7 @@ export default function Card({ id, type, cardInfo }) {
 			</div>
 			<div className="card__info">
 				<b>{title}</b>
-				<p>{text}</p>
+				<p>{checkText(text, 50)}</p>
 			</div>
 		</div>
 	)

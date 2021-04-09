@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
-import { updateSongLink } from '../../../store/songbar'
-import { checkText } from '../../../utils/format'
+import { checkText, updatePlayer } from '../../../utils'
 
 import './TrackRow.css'
 
@@ -20,12 +19,6 @@ export default function TrackRow({ id, rowInfo }) {
 		return `${Math.floor(minutes)}:${String(Math.floor(seconds)).padStart(2, '0')}`
 	}
 
-	function updatePlayer(e) {
-		e.preventDefault()
-		e.stopPropagation()
-		dispatch(updateSongLink(`https://open.spotify.com/embed/track/${id}`))
-	}
-
 	function navigate(link) {
 		console.log('', link)
 		history.push(link)
@@ -38,7 +31,7 @@ export default function TrackRow({ id, rowInfo }) {
 	return (
 		<div className="track-result__row">
 			<div className="track-result__row-info">
-				<div className="track-result__image-container" onClick={updatePlayer}>
+				<div className="track-result__image-container" onClick={e => updatePlayer(dispatch, e, 'track', id)}>
 					<div className="track-result__row-overlay">
 						<i className="fas fa-play"></i>
 					</div>
@@ -53,7 +46,7 @@ export default function TrackRow({ id, rowInfo }) {
 							{checkText(
 								artists.map(artist => {
 									return (
-										<p className="track-result__row-artist-link" onClick={() => navigate(`/artist/${artist.id}`)}>
+										<p key={artist.id} className="track-result__row-artist-link" onClick={() => navigate(`/artist/${artist.id}`)}>
 											{artist.name}
 										</p>
 									)

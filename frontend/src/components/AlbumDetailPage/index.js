@@ -5,10 +5,9 @@ import { useParams } from 'react-router'
 import TrackRow from '../Tracks/TrackRow'
 import { updateSongLink } from '../../store/songbar'
 import { getAlbums } from '../../store/albums'
-import { checkText } from '../../utils/format'
-import './AlbumDetailPage.css'
+import { checkText, getColors } from '../../utils'
 
-const getColors = require('get-image-colors')
+import './AlbumDetailPage.css'
 
 export default function AlbumDetailPage() {
 	const defaultImage =
@@ -20,15 +19,8 @@ export default function AlbumDetailPage() {
 	const [isLiked, setIsLiked] = useState(false)
 	const { [id]: album } = useSelector(state => state.albums)
 
-	function setBackgroundColor(image) {
-		getColors(image)
-			.then(colorArray => {
-				const firstColor = colorArray[0]._rgb
-				setColorState(`rgba(${firstColor[0]},${firstColor[1]},${firstColor[2]},${firstColor[3]})`)
-			})
-			.catch(e => {
-				console.log(e)
-			})
+	async function setBackgroundColor(image) {
+		setColorState((await getColors(image))[0])
 	}
 
 	useEffect(() => {
@@ -37,9 +29,7 @@ export default function AlbumDetailPage() {
 
 	useEffect(() => {
 		if (!album) dispatch(getAlbums(id))
-		else {
-			setIsLoaded(true) //! LOADS NOTHING IF NO ALBUM IS LOADED
-		}
+		else setIsLoaded(true) //! LOADS NOTHING IF NO ALBUM IS LOADED
 	}, [id, dispatch, album])
 
 	function convertTime(ms) {
@@ -89,7 +79,7 @@ export default function AlbumDetailPage() {
 							<div className="tracks">
 								<>
 									{album?.songs.tracks.map(track => (
-										<TrackRow id={track.id} rowInfo={{ name: track.name, artists: track.artists, explicit: track.explicit, duration: track.duration, number: track.track_number }} />
+										<TrackRow key={track.id} id={track.id} rowInfo={{ name: track.name, artists: track.artists, explicit: track.explicit, duration: track.duration, number: track.track_number }} />
 									))}
 								</>
 							</div>

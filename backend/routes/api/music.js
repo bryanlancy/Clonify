@@ -16,8 +16,30 @@ router.get('/', (req, res) => {
 })
 
 router.get(
+	'/artist',
+	asyncHandler(async (req, res) => {
+		const { artistIds } = req.query
+		console.log(albumIds)
+		if (artistIds) {
+			const config = {
+				method: 'get',
+				url: `https://api.spotify.com/v1/artists?ids=${artistIds}`,
+				headers,
+			}
+			const response = await axios(config)
+			if (response.status === 200) {
+				const artists = {}
+				res.json(response.data)
+			}
+		} else {
+			res.status(500).json({ message: 'Ooopsy Poopsy' })
+		}
+	})
+)
+
+router.get(
 	'/albums',
-	asyncHandler(async (req, res, next) => {
+	asyncHandler(async (req, res) => {
 		const { albumIds } = req.query
 		if (albumIds) {
 			const config = {

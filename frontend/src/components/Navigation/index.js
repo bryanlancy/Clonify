@@ -10,8 +10,9 @@ function Navigation({ isLoaded }) {
 
 	const sessionUser = useSelector(state => state.session.user)
 
-	function navigate(direction) {
-		history.go(direction)
+	function navigate(goBack) {
+		if (goBack) history.goBack()
+		else history.goForward()
 	}
 
 	let sessionLinks
@@ -29,10 +30,10 @@ function Navigation({ isLoaded }) {
 	return (
 		<div className="navbar">
 			<div className="navbar__history-buttons">
-				<div className="navbar__history-btn" onClick={() => navigate(-1)}>
+				<div className="navbar__history-btn" onClick={() => navigate(1)}>
 					<i className="far fa-chevron-left"></i>
 				</div>
-				<div className="navbar__history-btn" onClick={() => navigate(1)}>
+				<div className="navbar__history-btn" onClick={() => navigate(0)}>
 					<i className="far fa-chevron-right"></i>
 				</div>
 			</div>

@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-import { updateSongLink } from '../../store/songbar'
+import { checkText, updatePlayer } from '../../utils'
 
 import './Card.css'
 
@@ -12,28 +12,15 @@ export default function Card({ id, type, cardInfo }) {
 
 	const { image, title, text } = cardInfo
 
-	function updatePlayer(e) {
-		e.stopPropagation()
-		dispatch(updateSongLink(`https://open.spotify.com/embed/${type}/${id}`))
-	}
 	function navigate(id) {
 		history.push(`/${type}/${id}`)
 	}
 
-	function checkText(text, maxText) {
-		return text.length > maxText ? text.slice(0, maxText) + '...' : text
-	}
-
 	return (
-		<div
-			className="card"
-			onClick={() => {
-				navigate(id)
-			}}
-		>
+		<div className="card" onClick={() => navigate(id)}>
 			<div className="square">
 				<div className="card__image-container" style={{ backgroundImage: `url(${image})` }}>
-					<div className="card__play-button" onClick={updatePlayer}>
+					<div className="card__play-button" onClick={e => updatePlayer(dispatch, e, type, id)}>
 						<i className="fas fa-play"></i>
 					</div>
 				</div>

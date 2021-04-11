@@ -5,7 +5,7 @@ import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 import SearchList from './SearchList'
 import './SearchPage.css'
 
-import { searchResults } from '../../store/search'
+import { searchResults } from '../../../store/search'
 
 export default function SearchPage() {
 	//state management

@@ -1,6 +1,3 @@
-.album-page {
-	padding: calc(var(--navbar-height)) 0 calc(var(--widget-height));
-}
 .album {
 	height: 100%;
 	font-family: 'Montserrat', sans-serif;
@@ -92,15 +89,7 @@
 .play-button:hover {
 	transform: scale(1.05);
 }
-.heart-album,
-.heart-track,
-.dropdown-button {
-	font-size: 24px;
-	color: #8f8f8f;
-}
-:is(.heart-album, .heart-track, .dropdown-button):hover {
-	color: #bfbfbf;
-}
+
 .play-button i {
 	color: #fff;
 	transform: translateX(1.5px);

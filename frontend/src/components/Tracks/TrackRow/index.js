@@ -20,7 +20,6 @@ export default function TrackRow({ id, rowInfo }) {
 	}
 
 	function navigate(link) {
-		console.log('', link)
 		history.push(link)
 	}
 
@@ -59,7 +58,7 @@ export default function TrackRow({ id, rowInfo }) {
 			</div>
 
 			<div className="track-result__row-buttons">
-				<i className={`${isLiked ? 'fas is-liked' : 'fal'} fa-heart heart-track`} style={{ color: isLiked ? '#1db954' : '' }} onClick={toggleLike}></i>
+				<i className={`${isLiked ? 'fas is-liked' : 'fal'} fa-heart heart-tracks`} style={{ color: isLiked ? '#1db954' : '' }} onClick={toggleLike}></i>
 				<p className="track-result__row-duration">{convertTime(duration)}</p>
 				<i className="far fa-ellipsis-h track-options"></i>
 			</div>

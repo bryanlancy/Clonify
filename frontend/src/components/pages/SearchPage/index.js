@@ -5,7 +5,7 @@ import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 import SearchList from './SearchList'
 import './SearchPage.css'
 
-import { searchResults } from '../../store/search'
+import { searchResults } from '../../../store/search'
 
 export default function SearchPage() {
 	//state management
@@ -35,8 +35,8 @@ export default function SearchPage() {
 	}
 
 	function checkKey(e) {
-		const codes = ['Enter', 'NumpadEnter']
-		//if enter key was pressed, submit search
+		const codes = ['Enter', 'NumpadEnter'] //codes to accept, Enter,
+
 		if (codes.includes(e.code)) submitSearch()
 	}
 	function changeType(e) {

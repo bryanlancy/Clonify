@@ -24,3 +24,17 @@ body,
 	flex-direction: column;
 	color: var(--color-text-main);
 }
+
+.playlist-page,
+.artist-page,
+.album-page {
+	padding: calc(var(--navbar-height)) 0 calc(var(--widget-height));
+}
+
+.heart-tracks {
+	font-size: 24px;
+	color: #8f8f8f;
+}
+.heart-tracks:hover {
+	color: #bfbfbf;
+}

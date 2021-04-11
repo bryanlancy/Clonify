@@ -1,0 +1,78 @@
+.artist__details {
+	display: flex;
+	align-items: flex-end;
+	padding: 16px 24px;
+	height: 300px;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.artist-text > :not(:first-child) {
+	margin-top: 8px;
+}
+.artist-text h1 {
+	font-size: 7vw;
+	letter-spacing: -5px;
+}
+.verified-artist {
+	display: flex;
+	align-items: center;
+}
+.verified-artist i {
+	font-size: 24px;
+}
+.verified-artist p {
+	margin-left: 4px;
+	font-size: 14px;
+}
+.artist__music {
+	padding: 16px;
+}
+
+.follow-button {
+	padding: 8px 16px;
+	border: 1px solid;
+	border-radius: 4px;
+	font-size: 12px;
+	border: 1px solid #cfcfcf55;
+	user-select: none;
+}
+.active {
+	border: 1px solid #fff;
+}
+.follow-button:hover {
+	border: 1px solid #fff;
+}
+
+.artist__top-tracks,
+.artist__discography,
+.artist__related {
+	display: flex;
+	flex-direction: column;
+}
+:is(.artist__top-tracks, .artist__discography, .artist__related) > :not(:first-child) {
+	margin-top: 8px;
+}
+.artist__detail-title {
+	margin-top: 16px;
+	font-size: 22px;
+}
+.artist__tracks-toggle {
+	margin-top: 8px;
+	font-size: 12px;
+	color: var(--color-text-sub);
+}
+.artist__tracks-toggle:hover {
+	cursor: default;
+	user-select: none;
+	color: #fff;
+}
+.artist__related-list,
+.artist__discography-list {
+	display: grid;
+	justify-items: center;
+	align-items: center;
+	gap: 16px;
+
+	width: 100%;
+}

@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-import Card from '../Card'
-import TrackRow from '../Tracks/TrackRow'
+import Card from '../../Card'
+import TrackRow from '../../Tracks/TrackRow'
 
 export default function SearchList({ results, type }) {
 	let list
 
 	if (!(Object.entries(results) == 0)) {
 		list = (
-			<div className="search-list" style={type === 'track' ? { gridTemplateColumns: `var(--grid-unit)`, gap: '0', justifyItems: 'stretch' } : {}}>
+			<div className="search-list" style={type === 'track' ? { gridTemplateColumns: `1fr`, gap: '0', justifyItems: 'stretch' } : {}}>
 				{Object.entries(results.results).map(result => {
 					switch (type) {
 						case 'album':

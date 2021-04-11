@@ -52,14 +52,12 @@
 }
 .search-list {
 	display: grid;
-	gap: 16px;
-	width: 100%;
-	grid-template-columns: repeat(var(--columns), 1fr);
 	justify-items: center;
 	align-items: center;
-}
-.card {
-	max-width: calc(87vw / var(--columns));
+	gap: 16px;
+	grid-template-columns: repeat(var(--columns), 1fr);
+
+	width: 100%;
 }
 
 @media screen and (min-width: 550px) {

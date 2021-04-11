@@ -71,16 +71,20 @@
 	color: var(--color-text-sub);
 }
 .track-result__row-explicit {
-	margin-right: 8px;
-	padding: 4px;
 	height: 16px;
 	width: 16px;
+
 	border-radius: 2px;
+	margin-right: 8px;
+	padding: 4px;
+
 	background-color: var(--color-text-sub);
 	color: var(--color-background);
+
 	font-size: 10px;
-	text-align: center;
+	font-weight: 500;
 	line-height: 10px;
+	text-align: center;
 }
 .track-result__row-artist-list {
 	display: flex;

@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, Route, Switch } from 'react-router-dom'
 //Page Components
-import { SignupFormPage, LoginFormPage, AlbumDetailPage, SearchPage, ArtistDetailPage, PlaylistDetailPage } from './components/pages'
+import { SignupFormPage, LoginFormPage, AlbumDetailPage, SearchPage, ArtistDetailPage, PlaylistDetailPage, Dashboard } from './components/pages'
 //Other Components
 import Navigation from './components/Navigation'
 import SongBar from './components/SongBar'
 import ProtectedRoute from './components/ProtectedRoute'
+import Sidebar from './components/Sidebar'
 //Redux
 import { restoreUser } from './store/session'
 
@@ -23,6 +24,8 @@ function App() {
 			{isLoaded && (
 				<>
 					{sessionUser && <Navigation isLoaded={isLoaded} />}
+					{/* {sessionUser && <Sidebar />} */}
+
 					<Switch>
 						<Route path="/login">
 							{sessionUser && <Redirect to="/" />}
@@ -32,7 +35,9 @@ function App() {
 							{sessionUser && <Redirect to="/" />}
 							<SignupFormPage />
 						</Route>
-						<ProtectedRoute exact path="/"></ProtectedRoute>
+						<ProtectedRoute exact path="/">
+							<Dashboard />
+						</ProtectedRoute>
 						<ProtectedRoute path="/search">
 							<SearchPage />
 						</ProtectedRoute>

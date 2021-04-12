@@ -1,5 +1,3 @@
-import { fetch } from './csrf.js'
-
 const UPDATE_SONGLINK = 'songbar/updateSongLink'
 
 const updateLink = link => ({

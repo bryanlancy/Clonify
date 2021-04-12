@@ -34,7 +34,7 @@ export default function TrackRow({ id, rowInfo }) {
 					<div className="track-result__row-overlay">
 						<i className="fas fa-play"></i>
 					</div>
-					{image && <img className="track-result__row-image" src={image} />}
+					{image && <img alt="album-cover" className="track-result__row-image" src={image} />}
 					{!image && <p className="track-result__number">{number}</p>}
 				</div>
 				<div className="track-result__row-text">

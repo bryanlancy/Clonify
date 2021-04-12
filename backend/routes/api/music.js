@@ -45,7 +45,6 @@ router.get(
 								total: tracks.total,
 								tracks: tracks.items.map(track => {
 									const { id, name, artists, duration_ms, explicit, album } = track.track
-									console.log(artists)
 									return {
 										id,
 										name,
@@ -390,7 +389,6 @@ router.get(
 		const response = await axios(config)
 		if (response.status === 200) {
 			const { message, playlists, total } = response.data
-			console.log(playlists)
 			res.json({
 				total,
 				message,

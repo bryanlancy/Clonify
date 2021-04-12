@@ -4,6 +4,7 @@ import { useParams } from 'react-router'
 
 import TrackRow from '../../Tracks/TrackRow'
 import { getAlbums } from '../../../store/albums'
+import { addLike, removeLike } from '../../../store/likes'
 import { checkText, getColors, updatePlayer, defaultAvatar } from '../../../utils'
 
 import './AlbumDetailPage.css'
@@ -11,10 +12,12 @@ import './AlbumDetailPage.css'
 export default function AlbumDetailPage() {
 	const dispatch = useDispatch()
 	const { id } = useParams()
-	const [colorState, setColorState] = useState('#000000')
-	const [isLoaded, setIsLoaded] = useState(false)
-	const [isLiked, setIsLiked] = useState(false)
+	const { user } = useSelector(state => state.session)
+	const { [id]: like } = useSelector(state => state.likes)
 	const { [id]: album } = useSelector(state => state.albums)
+	const [isLiked, setIsLiked] = useState(false)
+	const [isLoaded, setIsLoaded] = useState(false)
+	const [colorState, setColorState] = useState('#000000')
 
 	async function setBackgroundColor(image) {
 		setColorState((await getColors(image))[0])
@@ -23,6 +26,10 @@ export default function AlbumDetailPage() {
 	useEffect(() => {
 		if (album) setBackgroundColor(album.image)
 	}, [album])
+
+	useEffect(() => {
+		setIsLiked(like ? true : false)
+	}, [like])
 
 	useEffect(() => {
 		if (!album) dispatch(getAlbums(id))
@@ -35,8 +42,12 @@ export default function AlbumDetailPage() {
 		return `${Math.floor(minutes)} min, ${Math.floor(seconds)} sec`
 	}
 
-	function changeLike() {
-		setIsLiked(!isLiked)
+	async function toggleLike() {
+		if (isLiked) {
+			setIsLiked(await dispatch(removeLike(user.id, id)))
+		} else {
+			setIsLiked(await dispatch(addLike(user.id, id, 'album')))
+		}
 	}
 
 	return (
@@ -66,7 +77,7 @@ export default function AlbumDetailPage() {
 								<div className="play-button" onClick={e => updatePlayer(dispatch, e, 'album', id)}>
 									<i className="fas fa-play"></i>
 								</div>
-								<i className={`${isLiked ? 'fas' : 'fal'} fa-heart heart-tracks`} onClick={changeLike} style={{ color: isLiked ? '#1db954' : '' }}></i>
+								<i className={`${isLiked ? 'fas' : 'fal'} fa-heart heart-tracks`} onClick={toggleLike} style={{ color: isLiked ? '#1db954' : '' }}></i>
 								<i className="far fa-ellipsis-h dropdown-button"></i>
 							</div>
 

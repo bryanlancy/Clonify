@@ -6,6 +6,8 @@ import albums from './albums'
 import artist from './artist'
 import playlist from './playlist'
 import search from './search'
+import likes from './likes'
+import dashboard from './dashboard'
 
 const rootReducer = combineReducers({
 	session,
@@ -14,6 +16,8 @@ const rootReducer = combineReducers({
 	playlist,
 	artist,
 	search,
+	likes,
+	dashboard,
 })
 
 let enhancer

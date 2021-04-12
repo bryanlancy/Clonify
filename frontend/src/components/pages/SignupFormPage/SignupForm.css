@@ -1,0 +1,17 @@
+.signup__container {
+	color: #fff;
+}
+.signup__form {
+	display: flex;
+	flex-direction: column;
+	width: 350px;
+}
+.signup__form label {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	margin-top: 8px;
+}
+.signup__form button {
+	margin-top: 8px;
+}

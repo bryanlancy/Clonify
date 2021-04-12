@@ -31,7 +31,7 @@
 	width: var(--button-radius);
 	height: var(--button-radius);
 	padding: 8px;
-	background-color: #000;
+	background-color: #050505;
 	color: var(--color-text-main);
 	border-radius: 50%;
 }
@@ -50,7 +50,7 @@
 	--button-radius: 32px;
 	width: var(--button-radius);
 	height: var(--button-radius);
-	background-color: #000;
+	background-color: #050505;
 	color: var(--color-text-main);
 }
 .fa-search {
@@ -63,7 +63,7 @@
 	border-radius: 24px;
 	border: none;
 	padding: 3px 3px;
-	background-color: #727272;
+	background-color: #050505;
 	color: #fff;
 }
 .profile-button:focus {
@@ -78,7 +78,7 @@
 .profile-icon {
 	padding: 8px;
 	border-radius: 50%;
-	background-color: #828282;
+	background-color: #282828;
 }
 
 .fa-sort-down {
@@ -94,15 +94,15 @@
 	right: 16px;
 	border-radius: 4px;
 	padding: 8px;
-	background-color: #727272;
+	background-color: #282828;
 	color: #fff;
 }
 .profile-dropdown li {
 	text-decoration: none;
 }
 .profile-dropdown button {
+	color: #fff;
 	margin-top: 8px;
-
 	border: none;
 	background: none;
 }

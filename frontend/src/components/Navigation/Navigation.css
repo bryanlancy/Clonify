@@ -10,6 +10,7 @@
 	background-color: #121212;
 }
 .navbar__buttons {
+	--button-radius: 32px;
 	display: flex;
 	align-items: center;
 }
@@ -24,16 +25,10 @@
 
 .navbar__history-btn {
 	--icon-adjust: 1.5px;
-	--button-radius: 32px;
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	width: var(--button-radius);
-	height: var(--button-radius);
-	padding: 8px;
+
 	background-color: #050505;
-	color: var(--color-text-main);
-	border-radius: 50%;
 }
 
 .fa-chevron-right {
@@ -43,14 +38,22 @@
 	transform: translateX(calc(var(--icon-adjust) * -1));
 }
 
-.navbar__search-btn {
+.navbar__history-btn,
+.navbar__search-btn,
+.navbar__home-btn {
 	padding: 8px;
-	border-radius: 50%;
-	margin-left: 16px;
-	--button-radius: 32px;
 	width: var(--button-radius);
 	height: var(--button-radius);
+	border-radius: 50%;
 	background-color: #050505;
+	color: var(--color-text-main);
+}
+
+.navbar__home-btn i {
+	transform: translate(-1px, -1.5px);
+}
+.navbar__search-btn {
+	margin-left: 16px;
 	color: var(--color-text-main);
 }
 .fa-search {

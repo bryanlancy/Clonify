@@ -13,7 +13,7 @@ export default function Card({ id, type, cardInfo }) {
 	const { image, title, text } = cardInfo
 
 	function navigate(id) {
-		history.push(`/${type}/${id}`)
+		if (type !== 'track') history.push(`/${type}/${id}`)
 	}
 
 	return (

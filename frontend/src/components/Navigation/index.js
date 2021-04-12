@@ -31,6 +31,14 @@ function Navigation({ isLoaded }) {
 		<div className="navbar">
 			<div className="navbar__buttons">
 				<div className="navbar__history-buttons">
+					<div
+						className="navbar__home-btn"
+						onClick={() => {
+							history.push('/')
+						}}
+					>
+						<i class="fal fa-home"></i>
+					</div>
 					<div className="navbar__history-btn" onClick={() => navigate(1)}>
 						<i className="far fa-chevron-left"></i>
 					</div>

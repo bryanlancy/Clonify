@@ -60,7 +60,7 @@ export default function PlaylistDetailPage() {
 									<a className="album-artist-name" href={`/user/${owner.id}`}>
 										{owner.name}
 									</a>
-									<p className="playlist-likes">{likes} likes</p>
+									<p className="playlist-likes">{likes.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} likes</p>
 									<p className="playlist-songs">{songs.total} songs</p>
 								</div>
 							</div>

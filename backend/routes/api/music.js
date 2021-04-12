@@ -13,6 +13,7 @@ router.use((req, res, next) => {
 	next()
 })
 
+//Get playlist by id
 router.get(
 	'/playlist/:id',
 	asyncHandler(async (req, res) => {
@@ -26,7 +27,6 @@ router.get(
 			const response = await axios(config)
 
 			if (response.status === 200) {
-				// console.log(response.data)
 				const { id, external_urls, images, name, description, followers, owner, tracks } = response.data
 				res.status(200).json({
 					playlist: {
@@ -66,10 +66,11 @@ router.get(
 					},
 				})
 			} else res.status(500).json({ message: 'Ooopsy Poopsy' })
-		} else res.json({ message: 'Please provide a playlist id.' }, 400)
+		} else res.status(400).json({ message: "Missing 'id'." })
 	})
 )
 
+//Get artists by id
 router.get(
 	'/artist',
 	asyncHandler(async (req, res) => {
@@ -193,6 +194,7 @@ router.get(
 	})
 )
 
+//Get albums by id
 router.get(
 	'/albums',
 	asyncHandler(async (req, res) => {
@@ -256,6 +258,7 @@ router.get(
 	})
 )
 
+//Search by type and query
 router.get(
 	'/search',
 	asyncHandler(async (req, res) => {
@@ -282,8 +285,8 @@ router.get(
 											[album.id]: {
 												openUrl: album.external_urls['spotify'],
 												name: album.name,
-												artists: album.artists.map(artist => artist.name),
 												image: album.images[0] ? album.images[0].url : defaultImage,
+												artists: album.artists.map(artist => artist.name),
 												songs: {
 													total: album.total_tracks,
 												},
@@ -372,6 +375,107 @@ router.get(
 				}
 			}
 		} else res.status(404).json('Ooopsy Poopsy')
+	})
+)
+
+//Get featured
+router.get(
+	'/featured',
+	asyncHandler(async (req, res) => {
+		const config = {
+			method: 'get',
+			url: `https://api.spotify.com/v1/browse/featured-playlists?country=US`,
+			headers,
+		}
+		const response = await axios(config)
+		if (response.status === 200) {
+			const { message, playlists, total } = response.data
+			console.log(playlists)
+			res.json({
+				total,
+				message,
+				playlists: Object.assign(
+					...playlists.items.map(playlist => {
+						const { id, images, name, external_urls, description } = playlist
+						return {
+							[id]: {
+								openUrl: external_urls['spotify'],
+								name,
+								image: images[0] ? images[0].url : defaultImage,
+								description,
+							},
+						}
+					})
+				),
+			})
+		}
+	})
+)
+
+//Get new releases
+router.get(
+	'/new-releases',
+	asyncHandler(async (req, res) => {
+		const config = {
+			method: 'get',
+			url: `https://api.spotify.com/v1/browse/new-releases?country=US`,
+			headers,
+		}
+		const response = await axios(config)
+		if (response.status === 200) {
+			const { albums, total } = response.data
+			res.json({
+				total,
+				albums: Object.assign(
+					...albums.items.map(album => {
+						const { id, images, name, artists, external_urls } = album
+						return {
+							[id]: {
+								openUrl: external_urls['spotify'],
+								name,
+								image: images[0] ? images[0].url : defaultImage,
+								artists: artists.map(a => a.name),
+							},
+						}
+					})
+				),
+			})
+		}
+	})
+)
+
+//Get recommendations
+router.get(
+	'/recommendations',
+	asyncHandler(async (req, res) => {
+		const { seed_artists, seed_genres, seed_tracks } = req.query
+
+		if (seed_artists || seed_genres || seed_tracks) {
+			const config = {
+				method: 'get',
+				url: `https://api.spotify.com/v1/recommendations?seed_artists=${seed_artists ? seed_artists : ''}&seed_genres=${seed_genres ? seed_genres : ''}&seed_tracks=${seed_tracks ? seed_tracks : ''}`,
+				headers,
+			}
+			const response = await axios(config)
+			if (response.status === 200) {
+				const { tracks } = response.data
+				res.json({
+					tracks: Object.assign(
+						...tracks.map(track => {
+							const { id, name, album, artists, external_urls } = track
+							return {
+								[id]: {
+									openUrl: external_urls['spotify'],
+									name,
+									image: album.images[0] ? album.images[0].url : defaultImage,
+									artists: artists.map(a => a.name),
+								},
+							}
+						})
+					),
+				})
+			} else res.status(500).json({ message: 'Ooopsy Poopsy' })
+		} else res.status(400).json({ message: 'Please provide a seed value.' })
 	})
 )
 

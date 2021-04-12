@@ -42,28 +42,31 @@ export default function ArtistDetailPage() {
 
 	let tracks
 	if (topTracks) {
-		tracks = Object.entries(topTracks).map((track, i) => {
-			const [id, rowInfo] = track
-			if (i < (showMore ? 10 : 5)) return <TrackRow key={id} id={id} rowInfo={rowInfo} />
-		})
+		tracks = Object.entries(topTracks)
+			.slice(0, showMore ? 10 : 5)
+			.map(track => <TrackRow key={track[0]} id={track[0]} rowInfo={track[1]} />)
 	}
 	let discography
 	if (albums) {
-		discography = Object.entries(albums).map((album, i) => {
-			const [albumId, albumInfo] = album
-			const { image, name, artists } = albumInfo
-			if (i < max) return <Card key={albumId} type="album" id={albumId} cardInfo={{ image, title: name, text: artists.join(', ') }} />
-		})
+		discography = Object.entries(albums)
+			.slice(0, max)
+			.map((album, i) => {
+				const [albumId, albumInfo] = album
+				const { image, name, artists } = albumInfo
+				return <Card key={albumId} type="album" id={albumId} cardInfo={{ image, title: name, text: artists.join(', ') }} />
+			})
 		count = Math.min(Object.keys(albums).length, max)
 	}
 
 	let related
 	if (relatedArtists) {
-		related = Object.entries(relatedArtists).map((artistRel, i) => {
-			const [artistId, artistInfo] = artistRel
-			const { name, image } = artistInfo
-			if (i < max) return <Card key={artistId} type="artist" id={artistId} cardInfo={{ image, title: name, text: 'Artist' }} />
-		})
+		related = Object.entries(relatedArtists)
+			.slice(0, max)
+			.map((artistRel, i) => {
+				const [artistId, artistInfo] = artistRel
+				const { name, image } = artistInfo
+				return <Card key={artistId} type="artist" id={artistId} cardInfo={{ image, title: name, text: 'Artist' }} />
+			})
 	}
 
 	return (

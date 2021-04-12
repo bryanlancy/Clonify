@@ -12,7 +12,7 @@ export default function SearchPage() {
 	const dispatch = useDispatch()
 	const [searchInput, setSearchInput] = useState('')
 	const [searchType, setSearchType] = useState('album')
-	const [searchLimit, setSearchLimit] = useState(50)
+	const [searchLimit] = useState(50)
 	const [searchOffset, setSearchOffset] = useState(0)
 	const [searchLoaded, setSearchLoaded] = useState(true)
 	const [scrolled, setScrolled] = useState(false)
@@ -57,7 +57,7 @@ export default function SearchPage() {
 
 	useEffect(() => {
 		getFocus()
-	}, [])
+	})
 
 	useEffect(() => {
 		submitSearch()

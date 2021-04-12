@@ -2,7 +2,6 @@ import { fetch } from './csrf.js'
 
 const SET_USER = 'session/setUser'
 const REMOVE_USER = 'session/removeUser'
-const UPDATE_SPOTIFY_TOKEN = 'session/updatseSpo'
 
 const setUser = user => ({
 	type: SET_USER,
@@ -11,11 +10,6 @@ const setUser = user => ({
 
 const removeUser = () => ({
 	type: REMOVE_USER,
-})
-
-const updateSpotifyAccess = token => ({
-	type: UPDATE_SPOTIFY_TOKEN,
-	token,
 })
 
 export const login = ({ credential, password }) => async dispatch => {

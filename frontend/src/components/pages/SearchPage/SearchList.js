@@ -6,7 +6,7 @@ import TrackRow from '../../Tracks/TrackRow'
 export default function SearchList({ results, type }) {
 	let list
 
-	if (!(Object.entries(results) == 0)) {
+	if (!(Object.entries(results).length === 0)) {
 		list = (
 			<div className="search-list" style={type === 'track' ? { gridTemplateColumns: `1fr`, gap: '0', justifyItems: 'stretch' } : {}}>
 				{Object.entries(results.results).map(result => {
@@ -20,7 +20,7 @@ export default function SearchList({ results, type }) {
 						case 'track':
 							return <TrackRow key={result[0]} id={result[0]} rowInfo={result[1]} />
 						default:
-							break
+							return null
 					}
 				})}
 			</div>

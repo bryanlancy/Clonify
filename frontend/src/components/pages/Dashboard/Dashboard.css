@@ -1,0 +1,8 @@
+.dashboard {
+}
+
+.dashboard__header {
+	display: flex;
+	align-items: flex-end;
+	height: 100px;
+}

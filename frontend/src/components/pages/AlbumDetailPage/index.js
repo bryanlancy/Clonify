@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 
 import TrackRow from '../../Tracks/TrackRow'
-import { updateSongLink } from '../../../store/songbar'
 import { getAlbums } from '../../../store/albums'
 import { checkText, getColors, updatePlayer, defaultAvatar } from '../../../utils'
 

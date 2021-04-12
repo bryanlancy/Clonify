@@ -10,5 +10,5 @@ export default function SongBar() {
 		setIsLoaded(true)
 	}, [songbar])
 
-	return isLoaded && <iframe className="songbar" src={songbar.link} frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+	return isLoaded && <iframe className="songbar" src={songbar.link} frameBorder="0" allowtransparency="true" allow="encrypted-media" title="songbar"></iframe>
 }

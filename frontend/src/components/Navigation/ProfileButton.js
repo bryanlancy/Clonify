@@ -30,9 +30,12 @@ function ProfileButton({ user }) {
 
 	return (
 		<>
-			<button onClick={openMenu}>
-				<i className="fal fa-user-alt"></i>
-				{user.username}
+			<button onClick={openMenu} className="profile-button">
+				<div className="profile-icon">
+					<i className="fal fa-user-alt "></i>
+				</div>
+				<b>{user.username}</b>
+				<i className={`fas ${showMenu ? 'fa-sort-up' : 'fa-sort-down'}`}></i>
 			</button>
 			{showMenu && (
 				<div className="profile-dropdown">

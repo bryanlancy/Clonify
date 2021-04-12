@@ -58,5 +58,17 @@
 }
 
 .profile-dropdown {
+	background-color: #fff;
+	padding: 8px;
+	border-radius: 4px;
 	position: absolute;
+	top: calc(var(--navbar-height) - 8px);
+	right: 16px;
+}
+.profile-dropdown li {
+	text-decoration: none;
+}
+.profile-dropdown button {
+	margin-top: 8px;
+	width: 100%;
 }

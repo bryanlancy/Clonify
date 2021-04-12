@@ -7,9 +7,12 @@
 	padding: 16px;
 	z-index: 1;
 	height: var(--navbar-height);
-	background-color: #ffd500;
+	background-color: #121212;
 }
-
+.navbar__buttons {
+	display: flex;
+	align-items: center;
+}
 .navbar__history-buttons {
 	display: flex;
 	justify-content: space-between;
@@ -38,6 +41,20 @@
 }
 .fa-chevron-left {
 	transform: translateX(calc(var(--icon-adjust) * -1));
+}
+
+.navbar__search-btn {
+	padding: 8px;
+	border-radius: 50%;
+	margin-left: 16px;
+	--button-radius: 32px;
+	width: var(--button-radius);
+	height: var(--button-radius);
+	background-color: #000;
+	color: var(--color-text-main);
+}
+.fa-search {
+	transform: translateY(-1px);
 }
 
 .profile-dropdown {

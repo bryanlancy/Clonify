@@ -1,8 +1,25 @@
-.dashboard {
+.dashboard__container {
+	padding: 0 16px 16px;
 }
 
 .dashboard__header {
 	display: flex;
 	align-items: flex-end;
 	height: 100px;
+}
+
+.dashboard__section {
+	display: flex;
+	flex-direction: column;
+	margin-top: 32px;
+}
+.dashboard__section > b {
+	font-size: 20px;
+	margin-bottom: 16px;
+}
+
+.dashboard__grid {
+	display: grid;
+	justify-items: center;
+	gap: 16px;
 }

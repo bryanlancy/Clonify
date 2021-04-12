@@ -10,6 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import Sidebar from './components/Sidebar'
 //Redux
 import { restoreUser } from './store/session'
+import { getLikes } from './store/likes'
 
 function App() {
 	const dispatch = useDispatch()
@@ -18,6 +19,11 @@ function App() {
 	useEffect(() => {
 		dispatch(restoreUser()).then(() => setIsLoaded(true))
 	}, [dispatch])
+	useEffect(() => {
+		if (sessionUser) {
+			dispatch(getLikes(sessionUser.id))
+		}
+	}, [dispatch, sessionUser])
 
 	return (
 		<>

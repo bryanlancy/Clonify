@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { addLike, removeLike } from '../../../store/likes'
 
 import { checkText, updatePlayer } from '../../../utils'
 
@@ -10,8 +12,9 @@ export default function TrackRow({ id, rowInfo }) {
 	//liked state??
 	const dispatch = useDispatch()
 	const history = useHistory()
-	const [isLiked, setIsLiked] = useState(false)
-	const { image, name, artists, explicit, duration, number } = rowInfo
+	const { user } = useSelector(state => state.session)
+	const { [id]: like } = useSelector(state => state.likes)
+	const [isLiked, setIsLiked] = useState(like ? true : false)
 
 	function convertTime(ms) {
 		const minutes = ms / 1000 / 60
@@ -23,10 +26,15 @@ export default function TrackRow({ id, rowInfo }) {
 		history.push(link)
 	}
 
-	function toggleLike() {
-		setIsLiked(!isLiked)
+	async function toggleLike() {
+		if (isLiked) {
+			setIsLiked(await dispatch(removeLike(user.id, id)))
+		} else {
+			setIsLiked(await dispatch(addLike(user.id, id, 'track')))
+		}
 	}
 
+	const { image, name, artists, explicit, duration, number } = rowInfo
 	return (
 		<div className="track-result__row">
 			<div className="track-result__row-info">

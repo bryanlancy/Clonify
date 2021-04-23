@@ -19,7 +19,7 @@ export default function Card({ id, type, cardInfo }) {
 	return (
 		<div className="card" onClick={() => navigate(id)}>
 			<div className="square">
-				<div className="card__image-container" style={{ backgroundImage: `url(${image})` }}>
+				<div className="card__image-container" style={{ backgroundImage: `url(${image})`, borderRadius: type === 'artist' ? '50%' : '4px' }}>
 					<div className="card__play-button" onClick={e => updatePlayer(dispatch, e, type, id)}>
 						<i className="fas fa-play"></i>
 					</div>
@@ -27,7 +27,7 @@ export default function Card({ id, type, cardInfo }) {
 			</div>
 			<div className="card__info">
 				<b>{title}</b>
-				<p>{checkText(text, 50)}</p>
+				{text && <p>{checkText(text, type === 'artist' ? 25 : 50)}</p>}
 			</div>
 		</div>
 	)

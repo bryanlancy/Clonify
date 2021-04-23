@@ -72,6 +72,7 @@ export default function SearchPage() {
 		//scrolled styling
 		if (percent > 0.1) setScrolled(true)
 		else setScrolled(false)
+
 		//preload for "infinite scroll"
 		if (percent > 85 && searchLoaded) {
 			setSearchLoaded(false)

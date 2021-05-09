@@ -1,3 +1,34 @@
 .footer {
-	background-color: #fff;
+	padding: 8px;
+
+	background-color: #000;
+	color: #fff;
+}
+.footer__title {
+	display: flex;
+	align-items: center;
+}
+.footer__title i {
+	font-size: 24px;
+	margin-right: 4px;
+}
+.footer__title p {
+	color: #ffffff44;
+	font-size: 12px;
+	align-self: flex-end;
+}
+.footer__title a {
+	text-decoration: none;
+	color: inherit;
+}
+.footer__title a:hover {
+	color: #ffffff66;
+}
+
+.footer__useful-links {
+	display: flex;
+	flex-direction: column;
+}
+.footer__useful-links p {
+	color: #ffffff44;
 }

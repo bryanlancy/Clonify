@@ -1,1 +1,3 @@
 # Spotify clone
+
+## Technologies used

@@ -1,0 +1,118 @@
+.login-social {
+	width: 100%;
+}
+.login-social__links {
+	display: flex;
+	flex-direction: column;
+}
+.login-social__links button {
+	margin-top: 8px;
+	padding: 4px;
+
+	border-radius: 24px;
+
+	font-weight: 500;
+	transition: all 0.2s ease-in-out;
+
+	text-transform: uppercase;
+}
+.login-social__icon {
+	margin-right: 8px;
+}
+.social-facebook {
+	border: none !important;
+	background-color: #3b5998;
+	color: #fff;
+}
+.social-facebook:hover {
+	background-color: #3a61b3;
+}
+.social-apple {
+	background-color: #000;
+	color: #fff;
+}
+.social-apple:hover {
+	background-color: #212121;
+}
+
+.social-google {
+	background-color: #fff;
+	color: #616467;
+}
+.social-google:hover {
+	background-color: #616467;
+	color: #fff;
+}
+
+.divider-container {
+	position: relative;
+	height: 50px;
+}
+.divider-container hr {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.divider-container p {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+
+	padding: 0 16px;
+
+	background-color: #2d46b9;
+}
+
+.login__container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	margin: 0 auto;
+
+	width: 50%;
+	min-width: 350px;
+	max-width: 550px;
+	height: 100vh;
+
+	color: #fff;
+}
+
+.login__container hr {
+	border: 0.5px solid #ffffff33;
+	width: 100%;
+}
+.login__container > hr {
+	margin: 16px 0;
+}
+.login__container button {
+	padding: 8px;
+
+	border: 1px solid #000;
+	border-radius: 24px;
+
+	transition: all 0.25s ease-in-out;
+
+	text-transform: uppercase;
+}
+.login__signup {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	width: 100%;
+}
+
+.signup-btn {
+	margin-top: 8px;
+
+	width: 100%;
+
+	border: none;
+}
+.signup-btn:hover {
+	color: #fff;
+	background-color: #616467;
+}

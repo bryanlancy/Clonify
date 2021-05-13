@@ -1,0 +1,28 @@
+.signup__container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	margin: 0 auto;
+
+	width: 50%;
+	min-width: 450px;
+	max-width: 550px;
+	height: 100vh;
+
+	color: #fff;
+}
+
+.signup__container p {
+	margin-top: 16px;
+}
+
+.signup__login {
+	color: #21e065;
+	text-decoration: underline;
+}
+
+.signup__login:hover {
+	cursor: pointer;
+}

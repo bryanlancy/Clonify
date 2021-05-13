@@ -1,0 +1,63 @@
+.footer {
+	padding: 64px 32px;
+
+	background-color: #000;
+	color: #fff;
+}
+.footer > :not(:first-child) {
+	margin-top: 48px;
+}
+.footer__title {
+	display: flex;
+	align-items: center;
+}
+
+.footer__title i {
+	font-size: 24px;
+	margin-right: 4px;
+}
+.footer__title p {
+	margin-left: 4px;
+
+	color: #ffffff44;
+	font-size: 12px;
+}
+.footer__title a {
+	text-decoration: none;
+	color: inherit;
+}
+.footer__title a:hover {
+	color: #ffffff66;
+}
+
+:is(.footer__useful-links, .footer__other-projects, .footer__connect) > :not(:first-child) {
+	margin-top: 16px;
+}
+:is(.footer__useful-links, .footer__other-projects, .footer__connect) :is(p, a) {
+	font-size: 14px;
+	font-weight: 500;
+}
+
+:is(.footer__useful-links, .footer__other-projects, .footer__connect) p {
+	color: #ffffff77;
+}
+:is(.footer__useful-links, .footer__other-projects, .footer__connect) a {
+	text-decoration: none;
+	color: #fff;
+}
+:is(.footer__useful-links, .footer__other-projects, .footer__connect) a:hover {
+	color: #1ed760;
+}
+.project-link {
+	display: flex;
+}
+.project-link p {
+	margin-left: 4px;
+
+	opacity: 0;
+
+	color: #ffffff44;
+}
+.project-link a:hover + p {
+	opacity: 1;
+}

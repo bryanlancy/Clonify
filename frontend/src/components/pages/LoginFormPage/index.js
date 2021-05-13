@@ -1,54 +1,63 @@
-import React, { useState } from 'react'
-import * as sessionActions from '../../../store/session'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+
+import { useSelector } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom'
-import './LoginForm.css'
+import './LoginFormPage.css'
+
+import LoginForm from '../../forms/LoginForm'
+import Footer from '../../Footer'
+import NavigationSimple from '../../NavigationSimple'
 
 function LoginFormPage() {
-	const dispatch = useDispatch()
 	const sessionUser = useSelector(state => state.session.user)
-	const [credential, setCredential] = useState('')
-	const [password, setPassword] = useState('')
-	const [errors, setErrors] = useState([])
+
 	const history = useHistory()
 
 	if (sessionUser) return <Redirect to="/" />
 
-	const handleSubmit = e => {
-		e.preventDefault()
-		setErrors([])
-		return dispatch(sessionActions.login({ credential, password })).catch(res => {
-			if (res.data && res.data.errors) setErrors(res.data.errors)
-		})
-	}
 	const handleSignup = () => {
 		history.push('/signup')
 	}
 
-	return (
-		<div className="page page-user">
-			<div className="login__container">
-				<h1>Log In</h1>
-				<form onSubmit={handleSubmit} className="login__form">
-					<ul>
-						{errors.map((error, idx) => (
-							<li key={idx}>{error}</li>
-						))}
-					</ul>
-					<label>
-						Username or Email
-						<input type="text" value={credential} onChange={e => setCredential(e.target.value)} required />
-					</label>
-					<label>
-						Password
-						<input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
-					</label>
-					<button type="submit">Log In</button>
-				</form>
-				<button className="signup-btn" onClick={handleSignup}>
-					Sign Up
-				</button>
+	let socialLinks
+	if (true) {
+		socialLinks = (
+			<div className="login-social">
+				<div className="login-social__links">
+					<button className="social-facebook">
+						<i className="fab fa-facebook login-social__icon"></i>Continue with Facebook
+					</button>
+					<button className="social-apple">
+						<i className="fab fa-apple login-social__icon"></i>Continue with Apple
+					</button>
+					<button className="social-google">
+						<i className="fab fa-google login-social__icon"></i>Continue with Google
+					</button>
+				</div>
+				<div className="divider-container">
+					<hr />
+					<p>OR</p>
+				</div>
 			</div>
+		)
+	}
+
+	return (
+		<div className="page-user">
+			<NavigationSimple />
+			<div className="login__container">
+				<h3>To continue, log in to Clonify.</h3>
+				{socialLinks}
+				<LoginForm />
+				<hr />
+				<div className="login__signup">
+					<p>Don't have an account?</p>
+					<button className="signup-btn" onClick={handleSignup}>
+						Sign Up
+					</button>
+				</div>
+			</div>
+			<Footer />
 		</div>
 	)
 }

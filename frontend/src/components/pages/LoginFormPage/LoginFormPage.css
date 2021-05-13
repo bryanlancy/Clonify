@@ -61,7 +61,7 @@
 
 	padding: 0 16px;
 
-	background: var(--color-background);
+	background-color: #2d46b9;
 }
 
 .login__container {
@@ -79,9 +79,7 @@
 
 	color: #fff;
 }
-.login__container > * {
-	/* margin-top: 16px; */
-}
+
 .login__container hr {
 	border: 0.5px solid #ffffff33;
 	width: 100%;

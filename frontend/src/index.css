@@ -31,6 +31,7 @@ body,
 	color: var(--color-text-main);
 }
 .page-user {
+	background-color: #2d46b9;
 	background-image: url('https://www-growth.scdn.co/static/home/bursts-tablet.svg');
 
 	justify-content: center;

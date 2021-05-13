@@ -20,8 +20,11 @@
 .login__form button {
 	margin-top: 16px;
 
+	border: none;
+
 	background-color: #15883e;
 	color: #fff;
+	font-weight: 500;
 }
 .login__form button:hover {
 	background-color: #21e065;

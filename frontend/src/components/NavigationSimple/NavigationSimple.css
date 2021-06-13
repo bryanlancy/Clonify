@@ -11,4 +11,9 @@
 
 .nav__title {
 	display: flex;
+	align-items: center;
+}
+.nav__title i {
+	font-size: 18px;
+	margin-right: 4px;
 }

@@ -20,7 +20,7 @@ function LoginFormPage() {
 	}
 
 	let socialLinks
-	if (true) {
+	if (false) {
 		socialLinks = (
 			<div className="login-social">
 				<div className="login-social__links">

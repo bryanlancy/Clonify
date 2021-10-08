@@ -1,6 +1,6 @@
 # Clonify
 
-1. <a href="#what-is-health-app">About</a>
+1. <a href="#what-is-clonify">About</a>
 1. <a href="#features">Features</a>
 1. <a href="#technologies">Technologies</a>
 1. <a href="#setup">Setup</a>

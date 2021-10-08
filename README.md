@@ -57,6 +57,11 @@ Find all the related music for an artist, song, and playlist. Being powered by S
     <img alt="PostgreSQL" src ="https://img.shields.io/badge/PostgreSQL-%23316192.svg?logo=postgresql&logoColor=white">
 </div>
 
+<p>APIs</p>
+<div>
+    <img alt="Spotify" src="https://img.shields.io/badge/Spotify-1ED760?logo=spotify&logoColor=white">
+</div>
+
 ## Setup
 
  <em>

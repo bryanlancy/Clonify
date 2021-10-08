@@ -1,6 +1,61 @@
-# Spotify clone
+# Clonify
 
-## Technologies used
+1. <a href="#what-is-health-app">About</a>
+1. <a href="#features">Features</a>
+1. <a href="#technologies">Technologies</a>
+1. <a href="#setup">Setup</a>
+
+
+## What is Clonify?
+Clonify is a clone of Spotify. The main focus for this project is to replicate the major functionalities of a music application, while using Spotify as inspiration for styling.
+
+<img src="images/clonify-header.png">
+
+The data for the application is largely powered by Spotify's API. This provides up-to-date data and allows for powerful functionalities, such as search and music reccomendations.
+
+Check out the live demo <a href="https://clonify-music.herokuapp.com/">here</a>!
+
+<a href="https://github.com/bryanlancy/Clonify/wiki">Explore the docs »</a>
+
+## Features
+### Search for music
+Search for new music by song, artist, or playlist and get results that are powered directly by Spotify's expansive music database.
+
+<img src="images/clonify-search.png">
+
+###  Listen to music
+After finding a song you like, or if you're curious about a new song or playlist, just press the green play button and you can stream the music with Spotify's embedded music player.
+
+<img src="images/clonify-player.png">
+
+### Get recommended music
+Using songs that you've liked through Clonify, the application will begin recommending suggested music based off of your preferences.
+
+<img src="images/clonify-recommended.png">
+
+### Get details on your favorite music and artists
+Find all the related music for an artist, song, and playlist. Being powered by Spotify's API, there's a lot of music.
+
+<img src="images/clonify-details.png">
+
+## Technologies
+<p>Frontend</p>
+<div>
+    <img alt="React" src="https://img.shields.io/badge/React%20-%2320232a.svg?logo=react&logoColor=%2361DAFB">
+    <img alt="Redux" src="https://img.shields.io/badge/Redux-764ABC?logo=redux">
+    <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript%20-%23F7DF1E.svg?logo=javascript&logoColor=black">
+</div>
+<div>
+    <img alt="HTML" src="https://img.shields.io/badge/HTML%20-%23E34F26.svg?logo=html5&logoColor=white">
+    <img alt="CSS3" src="https://img.shields.io/badge/CSS3%20-%231572B6.svg?logo=css3&logoColor=white">
+</div>
+
+<p>Backend</p>
+<div>
+    <img alt="Express.js" src="https://img.shields.io/badge/Express.js%20-%23404d59.svg?logo=express&logoColor=white">
+    <img alt="Sequelize" src ="https://img.shields.io/badge/Sequelize-52B0E7.svg?logo=sequelize&logoColor=white">
+    <img alt="PostgreSQL" src ="https://img.shields.io/badge/PostgreSQL-%23316192.svg?logo=postgresql&logoColor=white">
+</div>
 
 ## Setup
 
@@ -51,4 +106,3 @@
     1. Then run `npm start`. This will start the backend and frontend server. <br>
         - Each server can be started manually by navigating to the respective folder, `frontend` and `backend`, and running the command `npm start`.
     1. In your browser navigate to <a href="http://localhost:3000">localhost:3000</a>
-

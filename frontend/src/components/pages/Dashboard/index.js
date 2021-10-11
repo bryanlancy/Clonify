@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 import { getLists } from '../../../store/dashboard'
 
@@ -8,6 +9,7 @@ import Card from '../../Card'
 import './Dashboard.css'
 
 export default function Dashboard() {
+	const history = useHistory()
 	const dispatch = useDispatch()
 	const likes = useSelector(state => state.likes)
 	const { featured, newReleases, recommended } = useSelector(state => state.dashboard)
@@ -26,13 +28,13 @@ export default function Dashboard() {
 			if (type === 'track') tracks.push(likeId)
 		}
 		if (tracks.length > 0) dispatch(getLists(tracks.slice(0, 5).join(',')))
+		else dispatch(getLists())
 	}, [dispatch, likes])
 
-	let tilesHeader = [],
-		tilesRelease = [],
+	let tilesRelease = [],
 		tilesFeatured = [],
-		tilesRecommended = [],
-		tilesCategory = []
+		tilesRecommended = []
+
 	if (featured) {
 		for (const id in featured.playlists) {
 			const playlist = featured.playlists[id]
@@ -63,31 +65,42 @@ export default function Dashboard() {
 			<div className="dashboard__container">
 				<div className="dashboard__header">
 					<h1>{getGreeting()}</h1>
-					{/* <div className="dashboard__header-tiles">{tilesHeader}</div> */}
 				</div>
-				<div className="dashboard__section">
-					<b>New Releases</b>
-					<div className="dashboard__release-tiles dashboard__grid" style={style}>
-						{tilesRelease.slice(0, maxCards)}
+				{Object.keys(likes).length === 0 &&
+					<div className="dashboard__section">
+						<div className="dashboard__new-user">
+							<div>
+								<i className="fal fa-music"></i>
+								<p>Like a song or artist to receive personalized recommendations.</p>
+							</div>
+							<button onClick={() => history.push('/search')}>Search for music</button>
+						</div>
 					</div>
-				</div>
+				}
 				<div className="dashboard__section">
 					<b>Featured Playlists</b>
 					<div className="dashboard__featured-tiles dashboard__grid" style={style}>
 						{tilesFeatured.slice(0, maxCards)}
 					</div>
 				</div>
-				<div className="dashboard__section">
-					<b>Recommendations</b>
-					<div className="dashboard__recommended-tiles dashboard__grid" style={style}>
-						{tilesRecommended.slice(0, maxCards)}
-					</div>
-				</div>
+				{Object.keys(likes).length !== 0 &&
+					<>
+						<div className="dashboard__section">
+							<b>New Releases</b>
+							<div className="dashboard__release-tiles dashboard__grid" style={style}>
+								{tilesRelease.slice(0, maxCards)}
+							</div>
+						</div>
+						<div className="dashboard__section">
+							<b>Recommendations</b>
+							<div className="dashboard__recommended-tiles dashboard__grid" style={style}>
+								{tilesRecommended.slice(0, maxCards)}
+							</div>
+						</div>
+					</>
+				}
 			</div>
-			{/* <div>
-				<b>Categories??</b>
-				<div className="dashboard__category-tiles">{tilesCategory}</div>
-			</div> */}
+
 		</div>
 	)
 }

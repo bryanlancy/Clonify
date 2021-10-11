@@ -37,7 +37,7 @@ function Navigation({ isLoaded }) {
 							history.push('/')
 						}}
 					>
-						<i class="fal fa-home"></i>
+						<i className="fal fa-home"></i>
 					</div>
 					<div className="navbar__history-btn" onClick={() => navigate(1)}>
 						<i className="far fa-chevron-left"></i>

@@ -13,8 +13,14 @@ export const getLists = (seed_tracks, seed_artists) => async dispatch => {
 	if (resFeat.status === 200) lists.featured = resFeat.data
 	const resNew = await fetch('/api/music/new-releases')
 	if (resNew.status === 200) lists.newReleases = resNew.data
-	const resRec = await fetch(`/api/music/recommendations?${seed_tracks ? `seed_tracks=${seed_tracks}` : ''}${seed_artists ? `&seed_artists=${seed_artists}` : ''}`)
-	if (resRec.status === 200) lists.recommended = resRec.data
+	if (seed_tracks || seed_artists) {
+		const url = '/api/music/recommendations?'
+		url += seed_tracks ? `seed_tracks=${seed_tracks}` : ''
+		url += seed_artists ? `&seed_artists=${seed_artists}` : ''
+		const resRec = await fetch(url)
+		if (resRec.status === 200) lists.recommended = resRec.data
+
+	}
 
 	dispatch(addLists({ ...lists }))
 }

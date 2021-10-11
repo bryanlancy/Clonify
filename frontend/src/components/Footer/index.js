@@ -5,7 +5,7 @@ export default function Footer() {
 	return (
 		<div className="footer">
 			<div className="footer__title">
-				<i class="fab fa-spotify"></i>
+				<i className="fab fa-spotify"></i>
 				<h3>Clonify</h3>
 				<p>
 					a{' '}

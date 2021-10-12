@@ -31,22 +31,22 @@ function Navigation({ isLoaded }) {
 		<div className="navbar">
 			<div className="navbar__buttons">
 				<div className="navbar__history-buttons">
-					<div
+					<button
 						className="navbar__home-btn"
 						onClick={() => {
 							history.push('/')
 						}}
 					>
 						<i className="fal fa-home"></i>
-					</div>
-					<div className="navbar__history-btn" onClick={() => navigate(1)}>
+					</button>
+					<button className="navbar__history-btn" onClick={() => navigate(1)}>
 						<i className="far fa-chevron-left"></i>
-					</div>
-					<div className="navbar__history-btn" onClick={() => navigate(0)}>
+					</button>
+					<button className="navbar__history-btn" onClick={() => navigate(0)}>
 						<i className="far fa-chevron-right"></i>
-					</div>
+					</button>
 				</div>
-				<div
+				<button
 					className="navbar__search-btn"
 					onClick={() => {
 						history.push('/search')
@@ -54,7 +54,7 @@ function Navigation({ isLoaded }) {
 				>
 					<i className="far fa-search"></i>
 					{/* <input type="text" /> */}
-				</div>
+				</button>
 			</div>
 
 			{isLoaded && sessionLinks}

@@ -80,6 +80,26 @@ export default function SearchPage() {
 		}
 	})
 
+
+	let results
+	if (searchResultsObj.q === searchInput) results = <SearchList results={searchResultsObj} type={searchType} />
+	else results = (
+		<div className="search__list--no-results" >
+
+			<div>
+				<i className="fal fa-long-arrow-up"></i>
+				<p>Search for music above</p>
+			</div>
+
+			<div>
+				<p>Get results below</p>
+				<i className="fal fa-long-arrow-down"></i>
+			</div>
+
+		</div >
+	)
+
+
 	return (
 		<div className="page">
 			<div className={`search-input ${scrolled ? 'search-scrolled' : ''}`}>
@@ -103,7 +123,7 @@ export default function SearchPage() {
 					}}
 				></input>
 			</div>
-			<div className="search-page">{searchResultsObj.q === searchInput && <SearchList results={searchResultsObj} type={searchType} />}</div>
+			<div className="search-page">{results}</div>
 		</div>
 	)
 }

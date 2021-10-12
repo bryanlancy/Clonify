@@ -10,7 +10,8 @@
 		"dev:frontend": "npm install --prefix frontend start",
 		"sequelize": "npm run --prefix backend sequelize",
 		"sequelize-cli": "npm run --prefix backend sequelize-cli",
-		"start": "(cd backend && npm start) & (cd frontend && npm start)"
+		"start": "npm start --prefix backend",
+		"fullstart": "(cd backend && npm start) & (cd frontend && npm start)"
 	},
 	"keywords": [],
 	"author": "",

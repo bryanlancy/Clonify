@@ -108,6 +108,6 @@ Find all the related music for an artist, song, and playlist. Being powered by S
         1. `npm run db-seed`
 1. **Start the application**
     1. In your terminal, navigate to the main project folder.
-    1. Then run `npm start`. This will start the backend and frontend server. <br>
+    1. Then run `npm run fullstart`. This will start the backend and frontend server. <br>
         - Each server can be started manually by navigating to the respective folder, `frontend` and `backend`, and running the command `npm start`.
     1. In your browser navigate to <a href="http://localhost:3000">localhost:3000</a>

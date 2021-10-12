@@ -14,7 +14,7 @@ export const getLists = (seed_tracks, seed_artists) => async dispatch => {
 	const resNew = await fetch('/api/music/new-releases')
 	if (resNew.status === 200) lists.newReleases = resNew.data
 	if (seed_tracks || seed_artists) {
-		const url = '/api/music/recommendations?'
+		let url = '/api/music/recommendations?'
 		url += seed_tracks ? `seed_tracks=${seed_tracks}` : ''
 		url += seed_artists ? `&seed_artists=${seed_artists}` : ''
 		const resRec = await fetch(url)

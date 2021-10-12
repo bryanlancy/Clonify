@@ -66,7 +66,7 @@ export default function Dashboard() {
 				<div className="dashboard__header">
 					<h1>{getGreeting()}</h1>
 				</div>
-				{Object.keys(likes).length === 0 &&
+				{tilesRecommended.length === 0 &&
 					<div className="dashboard__section">
 						<div className="dashboard__new-user">
 							<div>
@@ -83,21 +83,19 @@ export default function Dashboard() {
 						{tilesFeatured.slice(0, maxCards)}
 					</div>
 				</div>
-				{Object.keys(likes).length !== 0 &&
-					<>
-						<div className="dashboard__section">
-							<b>New Releases</b>
-							<div className="dashboard__release-tiles dashboard__grid" style={style}>
-								{tilesRelease.slice(0, maxCards)}
-							</div>
+				<div className="dashboard__section">
+					<b>New Releases</b>
+					<div className="dashboard__release-tiles dashboard__grid" style={style}>
+						{tilesRelease.slice(0, maxCards)}
+					</div>
+				</div>
+				{tilesRecommended.length !== 0 &&
+					<div className="dashboard__section">
+						<b>Recommendations</b>
+						<div className="dashboard__recommended-tiles dashboard__grid" style={style}>
+							{tilesRecommended.slice(0, maxCards)}
 						</div>
-						<div className="dashboard__section">
-							<b>Recommendations</b>
-							<div className="dashboard__recommended-tiles dashboard__grid" style={style}>
-								{tilesRecommended.slice(0, maxCards)}
-							</div>
-						</div>
-					</>
+					</div>
 				}
 			</div>
 
